@@ -1,0 +1,64 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* pos_invoice_payment_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-20120808-233336\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-13 07:13+0000\n"
+"PO-Revision-Date: 2013-08-13 07:13+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_invoice_payment_customization
+#: model:ir.model,name:pos_invoice_payment_customization.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr "Línea extracto bancario"
+
+#. module: pos_invoice_payment_customization
+#: field:pos.order,with_invoice:0
+msgid "With Invoice"
+msgstr "With Invoice"
+
+#. module: pos_invoice_payment_customization
+#: code:addons/pos_invoice_payment_customization/pos_order.py:76
+#, python-format
+msgid "No Analytic Journal !"
+msgstr "No Analytic Journal !"
+
+#. module: pos_invoice_payment_customization
+#: constraint:account.bank.statement:0
+msgid "The journal and period chosen have to belong to the same company."
+msgstr "El diario y periodo seleccionados tienen que pertenecer a la misma compañía"
+
+#. module: pos_invoice_payment_customization
+#: model:ir.model,name:pos_invoice_payment_customization.model_account_bank_statement
+msgid "Bank Statement"
+msgstr "Extracto bancario"
+
+#. module: pos_invoice_payment_customization
+#: code:addons/pos_invoice_payment_customization/pos_order.py:76
+#, python-format
+msgid "You have to assign an analytic journal on the '%s' journal!"
+msgstr "You have to assign an analytic journal on the '%s' journal!"
+
+#. module: pos_invoice_payment_customization
+#: constraint:account.bank.statement.line:0
+msgid "The amount of the voucher must be the same amount as the one on the statement line"
+msgstr "El importe del recibo debe ser el mismo importe que el de la línea del extracto"
+
+#. module: pos_invoice_payment_customization
+#: model:ir.model,name:pos_invoice_payment_customization.model_pos_order
+msgid "Point of Sale"
+msgstr "Terminal Punto de Venta"
+
+#. module: pos_invoice_payment_customization
+#: field:account.bank.statement.line,create_move:0
+msgid "Create Move For Statement Line"
+msgstr "Create Move For Statement Line"
+

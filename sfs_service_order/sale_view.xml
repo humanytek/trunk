@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+            
+         <record model="ir.ui.view" id="sale_view_inherit_service">
+            <field name="name">sale.order.inherit.service</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/notebook/page[@string='History']" position="after">
+                    <page string="Service Order Request">
+                            <separator colspan="4" string="Service Order Request"/>
+                            <field colspan="4" name="service_order_ids" nolabel="1" readonly="1"/>
+                    </page>
+                 </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

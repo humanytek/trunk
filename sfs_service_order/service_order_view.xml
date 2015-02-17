@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+       <record id="view_service_order_form" model="ir.ui.view">
+            <field name="name">service.order.form</field>
+            <field name="model">service.order</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Service Order">
+                    <field name="name" readonly="1"/>
+                    <field name="source_id" readonly="1"/>
+                    <group colspan="4" col="4">
+                    	<separator string="Customer" colspan="4"/>
+                    	<group col="6" colspan="4">
+                    		<field name="customer_id" 
+                    			on_change="onchange_customer(customer_id)" 
+                    			domain="[('customer','=',True)]"/>
+                    		<field name="phone"/>
+                    		<field name="mobile"/>
+                    		<field name="address_id" 
+                    			colspan="6" 
+                    			domain="[('partner_id','=',customer_id)]"/>
+                    	</group>
+                    </group>
+                    <separator string="Details" colspan="4"/>
+                    <field name="sale_order_id" readonly="1"/>
+                    <field name="proposed_date_" attrs="{'readonly':[('state','=','cancelled')]}"/>
+                    <field name="proposed_time_" attrs="{'readonly':[('state','=','cancelled')]}"/>
+                    <field name="validity"/>
+                    <field name="product_state"/>
+                    <field name="order_line_ids" nolabel="1" colspan="4"/>
+                    <field name="state" readonly="1"/>
+                    <group col="3" colspan="2">
+                        <button string="Cancel" name="cancelled" states="pending" icon="gtk-cancel"/>
+                        <button string="Installer Assigned" 
+                        	states="pending" name="installer_assigned" icon="gtk-jump-to"/>
+                        <button string="In Process" 
+                        	name="in_process" states="inst_asigned" icon="gtk-jump-to"/>
+                        <button string="Activation Pending" 
+                        	name="activation_pending" states="in_process" icon="gtk-jump-to"/>
+                        <button string="Done" name="done" states="act_pending" icon="gtk-jump-to"/>
+                        <button string="Reset as Draft" 
+                        	name="re_assigned" states="cancelled" icon="gtk-jump-to"/>
+                    </group>
+                </form>
+            </field>
+      </record>
+            
+      <record id="view_service_order_tree" model="ir.ui.view">
+            <field name="name">service.order.tree</field>
+            <field name="model">service.order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Service Order">
+                    <field name="name"/>
+                    <field name="source_id"/>
+                    <field name="customer_id"/>
+                    <field name="proposed_date_"/>
+                    <field name="validity"/>
+                    <field name="product_state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_service_order_filter" model="ir.ui.view">
+            <field name="name">service.order.filter</field>
+            <field name="model">service.order</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Service Order">
+                    <field name="name"/>
+                    <field name="source_id"/>
+                    <field name="customer_id"/>
+                    <field name="product_state"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_service_order_form" model="ir.actions.act_window">
+            <field name="name">Service Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">service.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_service_order_tree"/>
+            <field name="search_view_id" ref="view_service_order_filter" />
+        </record>
+        
+<!--        <menuitem action="action_service_order_form" id="menu_service_order" name="Service Order" parent="menu_service" sequence="1"/>-->
+        <menuitem action="action_service_order_form" 
+        	id="menu_service_order" 
+        	name="Service Order" 
+        	parent="base.menu_sales" 
+        	sequence="4" 
+        	groups="base.group_sale_salesman,base.group_sale_manager"/>
+        
+         <record id="view_service_order_line_form" model="ir.ui.view">
+            <field name="name">service.order.line.form</field>
+            <field name="model">service.order.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Service Order Line">
+                	<notebook colspan="4">
+                    	<page string="Service Order Line">
+                    		<field name="sequence" readonly="1"/>
+                    		<field name="serial_number" readonly="1"/>
+                    		<field name="name" readonly="1"/>
+                    		<field name="kit_id" readonly="1"/>
+                    		<group col="4" colspan="4">
+                     			<button name="change_service_type_installation" string="Installation"
+                            	type="object" icon="gtk-execute" />
+                            
+                            	<button name="change_service_type_revision" string="Revision"
+                            	type="object" icon="gtk-execute" />
+                           
+                            	<button name="change_service_type_uninstall" string="Uninstall"
+                            	type="object" icon="gtk-execute" />
+                            
+                            	<button name="change_service_type_reinstall" string="Reinstall"
+                            	type="object" icon="gtk-execute" /> 
+                            	
+                     		</group>
+                     		<notebook colspan="4">
+                    			<page string="Accessories">
+                    				<separator string="Accessories" colspan="4"/>
+                    		        <field name="production_lot_ids" nolabel="1" colspan="4">
+                    		         <tree string="Production Lot">
+                    					<field name="prefix" />
+                    					<field name="name"/>
+                    					<field name="ref"/>
+                    					<field name="product_id"/>
+                    					<button name="action_traceability" 
+                    						string="Upstream Traceability" 
+                    						type="object" 
+                    						context="{'type': '', 'field': 'prodlot_id'}" 
+                    						icon="gtk-go-up" colspan="2"/>
+                                        <button name="action_traceability" 
+                                        	string="Downstream Traceability" 
+                                        	type="object" 
+                                        	context="{'type': 'move_history_ids', 'field': 'prodlot_id'}" 
+                                        	icon="gtk-go-down" colspan="2"/>
+                   						<field name="stock_available"/>
+                    					<field name="date"/>
+                						</tree>
+            						</field>
+                        		</page>	
+                        		<page string="Products">
+                    		        <field name="accessories_ids" nolabel="1" colspan="4">
+                    		        	<tree string="Products">
+                    						<field name="default_code"/>
+                    						<field name="name"/>
+                    						<field name="uom_id" string="UoM"/>
+                    						<field name="type"/>
+                    						<field name="state" groups="base.group_extended"/>
+               						    </tree>
+                    		        </field>
+                        		</page>
+                        	</notebook>
+                    		<notebook colspan="4">
+                    			<page string="Vehicle Data">
+                    				<field name="economic_num"/>
+                    				<field name="plates"/>
+                    				<field name="brand_id"/>
+                    				<field name="vehicle_type_id"/>
+                    				<!--<button name="assign_installer" string="Assign Installer"
+                            											type="object" icon="gtk-execute" />
+                        		--></page>	
+                        		<page string="Engine Data">	
+                    				<field name="engine_brand_id"/>
+                    				<field name="engine_model_id"/>
+                    			</page>	
+                    			<!--<page string="Info data for the installator person">		
+                    				<field name="installator_id" 
+                    					attrs="{'readonly':[('installator_status','=', True)]}"/>
+                    				
+                    				<newline/>
+                    				<field name="transport_method"/>
+                    				<field name="cust_entry_req"/>
+                    				<field name="service_address_id" 
+                    					domain="[('partner_id','=',parent.customer_id)]"/>
+                    				<field name="contact_person_id" 
+                    					on_change="onchange_contact_person(contact_person_id)" 
+                    					domain="[('partner_id','=',parent.customer_id)]"/>
+                    				<field name="phone"/>
+                    				<field name="mobile"/>
+                    				<field name="installator_status" invisible="1"/>
+                    			</page>
+                    			<page string="Revision">
+                    				<field name="problem_id"/>
+                    				<field name="no_ticket"/>
+                    			</page>
+                    			--><page string="Note">
+                    			    <field name="service_order_id" readonly="1"/>
+                    				<field name="customer_id"/>
+                    				<field name="note" nolabel="1" colspan="4"/>
+                    			</page>
+                    		</notebook>
+                    	</page>
+                    	<page string="Order Line Service Request">
+                            <field name="service_order_line_request_ids" nolabel="1" colspan="4"
+                             context="{'default_name': name,
+                             			'default_kit_id': kit_id,
+                             			'default_serial_number': serial_number,
+                             			'default_installator_id': installator_id,
+                             			'default_installator_status': installator_status,
+                             			'default_transport_method': transport_method,
+                             			'default_cust_entry_req': cust_entry_req,
+                             			'default_service_address_id': service_address_id,
+                             			'default_contact_person_id': contact_person_id,
+                             			'default_phone': phone,
+                             			'default_mobile': mobile,
+                             			'default_problem_id': problem_id,
+                             			'default_no_ticket': no_ticket,
+                             			'default_note': note,
+                             			'default_service_order_id': service_order_id,
+                             			'default_customer_id': customer_id
+                             }"
+                             />
+                            
+                    	</page>
+                    	<page string="Order Line Service Report">
+                            <field name="service_order_line_report_ids" 
+                            nolabel="1" colspan="4"/>
+                    	</page>
+                    </notebook>	
+                    <field name="state" readonly="1"/>
+                    <field name="is_incoming_shipment_generated" invisible="1"/>
+                    <group col="4" colspan="4">
+                    	<button name="oder_line_state_done" string="Done"
+                            	groups="base.group_service_order_manager" 
+                            	type="object" icon="gtk-execute" 
+                            	attrs="{'invisible':[('state','=','done')]}"/>
+                     	<button name="oder_line_state_reactivate" string="Reactivate"
+                            	groups="base.group_service_order_manager" 
+                            	type="object" icon="gtk-execute" 
+                            	attrs="{'invisible':[('state','=','pending')]}"/>        	
+                    	<button name="generate_incoming_shipment" string="Generate Incoming Shipment"
+                            	type="object" icon="gtk-execute" 
+                            	attrs="{'invisible':['|','|',('name','!=','uninstall'),('state','=','done'), ('is_incoming_shipment_generated','=', True)]}"/>
+                   </group> 
+                </form>
+            </field>
+      </record>
+      
+      <record id="view_service_order_line_tree" model="ir.ui.view">
+            <field name="name">service.order.line.tree</field>
+            <field name="model">service.order.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Service Order Line">
+                	<field name="sequence"/>
+                	<field name="serial_number"/>
+                    <field name="engine_model_id"/>
+                    <field name="economic_num"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_service_order_line_filter" model="ir.ui.view">
+            <field name="name">service.order.line.filter</field>
+            <field name="model">service.order.line</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Service Order Line">
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_service_order_line_report_tree" model="ir.ui.view">
+            <field name="name">service.order.line.report.tree</field>
+            <field name="model">service.order.line.report</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Service Order Line Report">
+<!--                    <field name="sequence"/>-->
+<!--                	<field name="sr_inst_start_date"/>-->
+<!--                	<field name="sr_inst_end_date"/>-->
+<!--                    <field name="sr_installator_id"/>-->
+<!--                    <field name="sr_service_type"/>-->
+                        <field name="sequence"/>
+                    	<field name="sr_engine_model_id"/>
+                    	<field name="sr_economic_num"/>
+                    	<field name="state"/>
+                    	<field name="sr_installator_id"/>
+                </tree>
+            </field>
+        </record>
+        
+         <record id="view_service_order_line_report_form" model="ir.ui.view">
+            <field name="name">service.order.line.report.form</field>
+            <field name="model">service.order.line.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Service Order Line Report">
+                            <field name="sequence"/>
+                    		<field name="sr_inst_start_date"/>
+                    		<field name="sr_inst_end_date"/>	
+                    		<field name="sr_installator_id"/>
+                    		<field name="sr_service_type"/>	
+                    		<field name="sr_contact_person_id" colspan="4" readonly="1"
+                    			domain="[('partner_id','=',parent.customer_id)]"/>
+                    		<field name="sr_service_address_id" colspan="4" readonly="1"
+                    			domain="[('partner_id','=',parent.customer_id)]"/>
+                    		<notebook colspan="4">
+                    			<page string="Vehicle Data">
+                    				<field name="sr_economic_num" />
+                    				<field name="sr_type" string="Plates"/>
+                    				<field name="sr_brand_id"/>
+                    				<field name="sr_year"/>
+                    				<field name="sr_model_id"/>
+                    				<newline/>
+                    				<field name="sr_protocol_id"/>
+                    				<field name="sr_vehicle_type_id"/>
+                    			</page>	
+                    			<page string="Engine Data">
+                    				<field name="sr_engine_brand_id"/>
+                    				<field name="sr_engine_model_id"/>
+                    				<field name="sr_engine_serial_no"/>
+                    			</page>	
+                    			<page string="Accessories">
+                    				<separator string="Accessories" colspan="4"/>
+                    		        <field name="sr_production_lot_ids" nolabel="1" colspan="4" readonly="1">
+                    		         <tree string="Production Lot">
+                    					<field name="prefix" />
+                    					<field name="name"/>
+                    					<field name="ref"/>
+                    					<field name="product_id"/>
+                    					<button name="action_traceability" 
+                    						string="Upstream Traceability" 
+                    						type="object" 
+                    						context="{'type': '', 'field': 'prodlot_id'}" 
+                    						icon="gtk-go-up" colspan="2"/>
+                                        <button name="action_traceability" 
+                                        	string="Downstream Traceability" 
+                                        	type="object" 
+                                        	context="{'type': 'move_history_ids', 'field': 'prodlot_id'}" 
+                                        	icon="gtk-go-down" colspan="2"/>
+                   						<field name="stock_available"/>
+                    					<field name="date"/>
+                						</tree>
+            						</field>
+                        		</page>	
+                        		<page string="Products">
+                    		        <field name="sr_accessories_ids" nolabel="1" colspan="4" readonly="1">
+                    		        	<tree string="Products">
+                    						<field name="default_code"/>
+                    						<field name="name"/>
+                    						<field name="uom_id" string="UoM"/>
+                    						<field name="type"/>
+                    						<field name="state" groups="base.group_extended"/>
+               						    </tree>
+                    		        </field>
+                        		</page>
+                    			<page string="Revision Data">
+                    				<field name="sr_problem_id" readonly="1"/>
+                    				<separator string="Solution" colspan="4"/>
+                    				<field name="sr_solution" colspan="4" nolabel="1"/>
+                    			</page>
+                    			<page string="Note">
+                    				<field name="sr_notes" nolabel="1" colspan="4"/>
+                    			</page>
+                    		</notebook>
+                    		<field name="sr_amount"/>
+                </form>
+            </field>
+      </record>
+      
+              <record id="view_service_order_line_request_tree" model="ir.ui.view">
+            <field name="name">service.order.line.request.tree</field>
+            <field name="model">service.order.line.request</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Service Order Line Request">
+                    <field name="sequence"/>
+                    <field name="engine_model_id"/>
+                    <field name="economic_num"/>
+                    <field name="state"/>
+                    <field name="installator_id"/>
+                </tree>
+            </field>
+        </record>
+        
+         <record id="view_service_order_line_request_form" model="ir.ui.view">
+            <field name="name">service.order.line.request.form</field>
+            <field name="model">service.order.line.request</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Service Order Line Request">
+                    	    
+                    		<field name="sequence" />
+                    		<field name="serial_number" readonly="1"/>
+                    		<field name="name" readonly="1"/>
+                    		<field name="kit_id" readonly="1"/>
+                     		<button name="create_report" string="Create Report"
+                            	type="object" icon="gtk-execute" />
+                        	 <notebook colspan="4">
+                        	    <page string="Vehicle Data">
+                    				<field name="economic_num"/>
+                    				<field name="plates"/>
+                    				<field name="brand_id"/>
+                    				<field name="vehicle_type_id"/>
+                        		</page>	
+                        		<page string="Engine Data">	
+                    				<field name="engine_brand_id"/>
+                    				<field name="engine_model_id"/>
+                    			</page>	
+                    			<page string="Info data for the installator person">		
+                    				<field name="installator_id" 
+                    						attrs="{'readonly':[('installator_status','=', True)]}"/>
+                    				
+                    				<newline/>
+                    				<field name="transport_method"/>
+                    				<field name="cust_entry_req"/>
+                    				<field name="service_address_id" 
+                    						domain="[('partner_id','=',parent.customer_id)]"/>
+                    				<field name="contact_person_id" 
+                    						on_change="onchange_contact_person(contact_person_id)" 
+                    						domain="[('partner_id','=',parent.customer_id)]"/>
+                    				<field name="phone"/>
+                    				<field name="mobile"/>
+                    				<field name="installator_status" invisible="1"/>
+                    			</page>
+                    			<page string="Accessories">
+                    				<separator string="Accessories" colspan="4"/>
+                    		        <field name="production_lot_ids" nolabel="1" colspan="4">
+                    		         <tree string="Production Lot">
+                    					<field name="prefix" />
+                    					<field name="name"/>
+                    					<field name="ref"/>
+                    					<field name="product_id"/>
+                    					<button name="action_traceability" 
+                    						string="Upstream Traceability" 
+                    						type="object" 
+                    						context="{'type': '', 'field': 'prodlot_id'}" 
+                    						icon="gtk-go-up" colspan="2"/>
+                                        <button name="action_traceability" 
+                                        	string="Downstream Traceability" 
+                                        	type="object" 
+                                        	context="{'type': 'move_history_ids', 'field': 'prodlot_id'}" 
+                                        	icon="gtk-go-down" colspan="2"/>
+                   						<field name="stock_available"/>
+                    					<field name="date"/>
+                						</tree>
+            						</field>
+                        		</page>	
+                        		<page string="Products">
+                    		        <field name="accessories_ids" nolabel="1" colspan="4">
+                    		        	<tree string="Products">
+                    						<field name="default_code"/>
+                    						<field name="name"/>
+                    						<field name="uom_id" string="UoM"/>
+                    						<field name="type"/>
+                    						<field name="state" groups="base.group_extended"/>
+               						    </tree>
+                    		        </field>
+                        		</page>
+                    			<page string="Revision">
+                    				<field name="problem_id"/>
+                    				<field name="no_ticket"/>
+                    			</page>
+                    			<page string="Note">
+                    			    <field name="service_order_id" readonly="1"/>
+                    				<field name="customer_id"/>
+                    				<field name="note" nolabel="1" colspan="4"/>
+                    			</page>
+                    		</notebook>
+                </form>
+            </field>
+      </record>
+        
+        <record id="action_service_order_line_form" model="ir.actions.act_window">
+            <field name="name">Service Order Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">service.order.line</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_service_order_line_tree"/>
+            <field name="search_view_id" ref="view_service_order_line_filter" />
+        </record>
+        
+<!--        <menuitem action="action_service_order_line_form" id="menu_service_order_line" name="Service Order Line" parent="menu_service" sequence="1"/>-->
+        <menuitem action="action_service_order_line_form" 
+        			id="menu_service_order_line" 
+        			name="Service Order Line" 
+        			parent="base.menu_sales" 
+        			sequence="5" 
+        			groups="base.group_sale_salesman,base.group_sale_manager"/>
+ 
+    </data>
+</openerp>

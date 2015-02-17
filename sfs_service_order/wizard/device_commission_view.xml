@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_device_commission_report" model="ir.ui.view">
+            <field name="name">device.commission.wizard.report</field>
+            <field name="model">device.commission.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+              <form string="Device Commission">
+                    <field name="emp_id" colspan="4"/>
+                    <newline/>
+                    <field name="initial_date" />
+                    <field name="end_date" />
+                    <newline/>
+                    <label></label>
+             		<button name="print_report" string="Print Report" type="object" icon="gtk-print" colspan="2"/>            		
+             	</form>
+             </field>
+        </record>
+		
+       <act_window name="Device Commission"
+            res_model="device.commission.wizard"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_device_commission"/>                     
+    
+    <menuitem action="action_device_commission" id="menu_device_commission" parent="base.next_id_64" sequence="2"/>
+    
+    </data>
+</openerp>

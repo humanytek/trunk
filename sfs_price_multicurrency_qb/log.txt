@@ -1,0 +1,13 @@
+V1.0 By Subhin P V
+On 02 September 2013
+	* Modified The currency conversion function. Currency is configured for a product by the user before 
+	the sale 
+V1.1 By Prajul P T
+On 05 September 2013
+    * Added new field called Public Price(USD) in product so that if the currency of the pricelist in sales in USD, this value is fetched else normal workflow.
+V1.2 By Prajul P T
+On 06 September 2013
+    * Removed Public Price (USD) field from product.product
+    * Added a new field called list_price_currency_id to denote the currency in which the list price is represented
+    * If the listprice is represented in the currency of the pricelist in sales, same lis price will be considered w/o currency conversion
+    * If the list price currency is different from the pricelist currency, the list price will be converted from the listprice currency to the pricelist currency

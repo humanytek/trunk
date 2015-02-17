@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <report id="l10n_mx_facturae.account_invoice_facturae_pdf"
+            name="account.invoice.facturae.pdf.inherit"
+            string="Factura Electronica PDF"
+            model="account.invoice"
+            header="False"
+            rml="sfs_multy_address_facturae/report/invoice_facturae_pdf.rml"
+            attachment_use="1"
+            attachment="(object.state in ('open','paid')) and (object.cadena_original) and (object.fname_invoice and (object.fname_invoice + ''))"
+            groups="l10n_mx_facturae.group_facturae_mx_cfd_user"
+        />
+        
+        <report id="l10n_mx_facturae_pac_sf.account_invoice_facturae_pac_sf_pdf"
+            name="account.invoice.facturae.pac.sf.pdf.inherit"
+            string="Factura Electronica PDF PAC SF"
+            model="account.invoice"
+            header="False"
+            rml="sfs_multy_address_facturae/report/invoice_facturae_pac_sf_pdf.rml"
+            attachment_use="1"
+            attachment="(object.state in ('open','paid')) and (object.cfdi_folio_fiscal) and (object.fname_invoice and (object.fname_invoice + ''))"
+            groups="l10n_mx_facturae_pac_sf.group_facturae_mx_cfdi_pac_sf_user"
+        />
+        
+    </data>
+</openerp>

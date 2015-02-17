@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+          <report auto="False" id="account_move_report_details" model="account.move"  name="account.move.report"
+				rml="account_entry_report/report/account_entries.rml"  string="Entry Report"
+                usage="default"/>      
+    </data>
+</openerp>

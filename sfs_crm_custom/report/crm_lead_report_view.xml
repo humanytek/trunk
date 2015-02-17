@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<record id="view_report_crm_lead_tree_sfs_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.report.tree.sfs</field>
+            <field name="model">crm.lead.report</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="crm.view_report_crm_lead_tree"/>
+            <field name="arch" type="xml">
+            	<field name="country_id" position="after">
+            		<field name="creator_id" invisible="1"/>
+            	</field>
+            </field>
+        </record>
+        
+        <record id="view_report_crm_lead_filter_sfs_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.report.select.sfs</field>
+            <field name="model">crm.lead.report</field>
+            <field name="type">search</field>
+            <field name="inherit_id" ref="crm.view_report_crm_lead_filter"/>
+            <field name="arch" type="xml">
+            	<filter string="Salesman" position="after">
+            		<filter string="Creador" name="user" icon="terp-personal"
+                            domain="[]" context="{'group_by':'creator_id'}" />
+            	</filter>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

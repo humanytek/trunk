@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<!--=======================Sequence==============================-->
+		<record id="sequence_contract_type" model="ir.sequence.type">
+            <field name="name">Sale Contract</field>
+            <field name="code">sale.contract</field>
+        </record>
+        <record id="sequence_sale_contract" model="ir.sequence">
+            <field name="name">Sale Contract</field>
+            <field name="code">sale.contract</field>
+            <field eval="3" name="padding"/>
+            <field name="prefix">SC/</field>
+        </record>
+	<!--=======================scheduler========================-->
+        <record forcecreate="True" id="ir_cron_expired_contracts" model="ir.cron">
+            <field name="name">Search for Expired Contracts</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'sale.contract'" name="model"/>
+            <field eval="'run_expired_contracts'" name="function"/>
+            <field eval="'(False,)'" name="args"/>
+        </record>
+        
+        <record forcecreate="True" id="ir_renew_contract" model="ir.cron">
+            <field name="name">Renew Contract</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="renew"/>
+            <field eval="'sale.contract'" name="model"/>
+            <field eval="'run_renew_contract'" name="function"/>
+            <field eval="'(False,)'" name="args"/>
+        </record>
+        
+        <record forcecreate="True" id="ir_invoice_create" model="ir.cron">
+            <field name="name">Create Invoice</field>
+            <field eval="True" name="active"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="invoice"/>
+            <field eval="'sale.contract'" name="model"/>
+            <field eval="'create_invoice'" name="function"/>
+            <field eval="'(False,)'" name="args"/>
+        </record>
+    </data>
+</openerp>

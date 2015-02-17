@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	<record model="ir.ui.view" id="view_voucher_tree_inherit">
+    		<field name="name">account.voucher.tree.inherit</field>
+			<field name="model">account.voucher</field>
+			<field name="inherit_id" ref="account_voucher.view_voucher_tree"/>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<field name="partner_id" position="after">
+					<field name="user_id"/>
+				</field>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_voucher_filter_inherit">
+            <field name="name">view.voucher.filter.inherit</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="user_id"/>
+                </xpath>
+            </data>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_voucher_filter_customer_pay_inherit">
+            <field name="name">view.voucher.filter.customer.pay.inherit</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter_customer_pay"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="user_id"/>
+                </xpath>
+            </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

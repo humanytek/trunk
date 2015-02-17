@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="inventory_update_wizard" model="ir.ui.view">
+            <field name="name">sale.shop</field>
+            <field name="model">inventory.update.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Inventory Update">
+                    <field name="location_id" colspan="4" domain="[('usage', '=', 'internal')]"/>
+                    <field name="inv_file" colspan="4"/>
+                    <group colspan="4" col="2">
+                        <button name="update_inv" type="object" string="Update" icon="STOCK_ADD"/>
+                        <button special="cancel" string="Cancel" icon="gtk-cancel"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="inventory_update_wizard_summery" model="ir.ui.view">
+            <field name="name">inventory.update.wizard</field>
+            <field name="model">inventory.update.wizard.sumery</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Summary">
+                    <group string="Summary" colspan="4" col="1">
+                        <field name="update_summery" nolabel="1"/>
+                    </group>
+                    <group>
+                        <button special="cancel" string="Ok" icon='gtk-cancel'/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <act_window name="Update Inventory"
+            res_model="inventory.update.wizard"
+            src_model="stock.inventory"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"    
+            id="action_inventory_update"/> 
+    </data>
+</openerp>

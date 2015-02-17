@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_picking_out_form_install_doc">
+            <field name="name">stock.picking.out.form.install_doc</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_out_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <xpath expr="//button[@name='button_cancel']" position="after">
+                <field name="install_doc" invisible="1"/>
+                <button name="create_install_doc" attrs="{'invisible':[('install_doc', '=',True)]}"
+                    string="Create Installation Document" type="object" icon="terp-gtk-go-back-rtl"/>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</openerp>

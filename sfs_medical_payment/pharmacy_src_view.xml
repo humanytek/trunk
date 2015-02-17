@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+    <act_window
+        id="pharmacy_prescription_src"
+        name="Pharmacy"
+        res_model="medical.prescription.order"
+        src_model="medical.prescription.order"
+
+		domain="[('id', '=', active_id)]"
+		view_mode="tree,form"
+
+
+    />
+
+
+    </data>
+</openerp>

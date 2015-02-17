@@ -1,0 +1,7 @@
+V1.0 By Muhammad Ashif k
+On 29 August 2013
+	* Modified The Sale Order Line Warning Message, added the reserved quantity to the warning message. 
+	
+V1.1 By Muhammad Ashif k
+On 03 September 2013
+	* bug/1219956 fixed. And add a i18n folder and add a PO file to translate into Spanish.

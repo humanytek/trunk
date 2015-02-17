@@ -1,0 +1,161 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+		<!--====================Production Lot====================-->
+        <record model="ir.ui.view" id="view_production_lot_form_inherit">
+            <field name="name">stock.production.lot.form.inherit11</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <notebook>
+                	<page string="Traceable">
+
+                	<field name="control_ids" nolabel="1" colspan="4">
+                		<form string="Traceable Data">
+                			<field name="lot_config_id" on_change="onchange_lot_config_id(lot_config_id)"/>
+                			<field name="control_number" />
+                			<field name="expirable" on_change="onchange_expirable(expirable)"/>
+                			<field name="due_date" attrs="{'required':[('expirable','=',True)]}"/>
+                			<field name="required"/>
+                			<field name="indexed"/>
+                		</form>
+                		<tree string="Traceable Data" colors="red:(due_date&lt;current_date);black:(due_date&gt;=current_date);black:(due_date==False)" editable="top">
+                			<field name="lot_config_id" on_change="onchange_lot_config_id(lot_config_id)"/>
+                			<field name="control_number" />
+                			<field name="expirable" on_change="onchange_expirable(expirable)"/>
+                			<field name="due_date" attrs="{'required':[('expirable','=',True)]}"/>
+                			<field name="required"/>
+                			<field name="indexed"/>
+                		</tree>
+                	</field>
+
+                	</page>
+                </notebook>
+            </field>
+        </record>
+
+		<record id="stock.view_production_lot_tree" model="ir.ui.view">
+            <field name="name">stock.production.lot.tree</field>
+            <field name="model">stock.production.lot</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Production Lot" colors="red:(expired==True);black:(expired==False and stock_available&gt;0);blue:(expired==False and stock_available==0)">
+                    <field name="prefix" />
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="product_id"/>
+					<field name="stock_available"/>
+                    <field name="date"/>
+                    <field name="expired"/>
+                    <field name="control_number" invisible="1"/>
+                    <field name="lot_config_id" invisible="1"/>
+
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="search_product_lot_filter_add_expired">
+            <field name="name">Production Lots Filter add expired</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.search_product_lot_filter"/>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <filter name="available" position="after">
+                    <filter icon="gtk-dialog-error" name="expired" string="Expired" domain="[('expired', '=', True)]" help="Production lots expired"/>
+
+                </filter>
+                <group string="Group By..." colspan="4" col="8" position="before">
+                    <group expand="0" colspan="4" col="8" string="Extended Filters...">
+                        <field name="control_number" />
+                        <field name="lot_config_id" />
+
+                    </group>
+                    <newline/>
+                </group>
+
+            </field>
+        </record>
+<!--===========================lot config=========================-->
+ 	<record model="ir.ui.view" id="lot_config_search">
+		<field name="name">stock.lot.config.search</field>
+        <field name="model">stock.lot.config</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Search Lot Configuration">
+                <group>
+
+                    <field name="name"/>
+
+                </group>
+                <newline/>
+
+            </search>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="lot_config_form">
+        <field name="name">stock.lot.config.form</field>
+        <field name="model">stock.lot.config</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Lot Configuration">
+            	<field name="name" />
+            	<field name="required"/>
+            	<field name="indexed"/>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="lot_config_tree">
+        <field name="name">stock.lot.config.tree</field>
+        <field name="model">stock.lot.config</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Lot Configuration">
+            	<field name="name" />
+            	<field name="required"/>
+            	<field name="indexed"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_lot_config_form">
+        <field name="name">Production Lot Configuration</field>
+        <field name="res_model">stock.lot.config</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+    </record>
+
+    <menuitem name="Lot Configuration"
+    id="menu_action_lot_config_form"
+    action="action_lot_config_form"
+    sequence="3"
+    parent="stock.menu_product_in_config_stock" groups="stock.group_stock_manager,stock.group_stock_user"/>
+
+<!--=========================Adds link in products========================-->
+
+ 		<act_window name="Production Lot"
+			domain="[('product_id', '=',active_id )]"
+            res_model="stock.production.lot"
+            src_model="product.product"
+            id="product_production_lot_link_id" />
+
+
+		<!--
+		##########################
+		 Production Lots Menu rename
+		########################
+		 -->
+        <record id="action_production_lot_form" model="ir.actions.act_window">
+            <field name="name">Production Lots/Part Numbers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.production.lot</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="stock.view_production_lot_tree"/>
+            <field name="search_view_id" ref="stock.search_product_lot_filter" />
+            <field name="context">{'full':'1',"search_default_available":1}</field>
+            <field name="help">This is the list of all the production lots (serial numbers) you recorded. When you select a lot, you can get the upstream or downstream traceability of the products contained in lot. By default, the list is filtred on the serial numbers that are available in your warehouse but you can uncheck the 'Available' button to get all the lots you produced, received or delivered to customers.</field>
+        </record>
+
+         <menuitem action="action_production_lot_form" id="stock.menu_action_production_lot_form"
+            parent="stock.menu_traceability" groups="base.group_extended"
+            sequence="1"/>
+    </data>
+</openerp>

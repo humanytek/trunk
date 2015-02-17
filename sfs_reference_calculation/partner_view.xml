@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<openerp>
+    <data>
+		<record id="sfs_view_res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">sfs.view.res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="reference"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="sfs_view_res_partner_tree_inherit" model="ir.ui.view">
+            <field name="name">sfs.view.res.partner.tree.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="reference"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

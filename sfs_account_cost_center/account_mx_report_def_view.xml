@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="inh_account_mxreport_def_form">
+            <field name="name">Account mxreport Inherit</field>
+            <field name="model">account.mx_report_definition</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="hesatec_mx_accounting_reports_v61.view_account_mx_report_definition_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@string='Cuentas contables']" position="after">
+                    <page string="Cost Centers" attrs="{'invisible':[('type','!=','detail')]}">
+                        <field name="cost_center_ids" nolabel="1"/>
+                    </page>
+                </xpath>
+            </field>    
+        </record>
+    </data>
+</openerp>

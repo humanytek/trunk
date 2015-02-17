@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <report id="l10n_mx_facturae_cbb.account_invoice_facturae_pdf2"
+            name="account.invoice.facturae.pdf2.sfs"
+            string="Factura Electronica CBB PDF"
+            model="account.invoice"
+            header="False"
+            rml="sfs_l10n_mx_facturae_cbb_customization/report/invoice_facturae_pdf_sfs.rml"
+            attachment_use="1"
+            attachment="(object.state in ('open','paid')) and (object.fname_invoice and (object.fname_invoice + ''))"
+            groups="l10n_mx_facturae_cbb.group_facturae_mx_cbb_user"
+        />
+        
+    </data>
+</openerp>

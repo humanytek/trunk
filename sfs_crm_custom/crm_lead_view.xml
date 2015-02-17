@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+		<record model="ir.ui.view" id="crm_case_form_view_leads_sfs_inherit">
+	        <field name="name">CRM - Leads Form sfs</field>
+	        <field name="model">crm.lead</field>
+	        <field name="type">form</field>
+	        <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+	        <field name="arch" type="xml">
+	        	<field name="user_id" position="after">
+	        		<field name="creator_id"/>
+	        	</field>
+	        </field>
+        </record>
+        
+        <record model="ir.ui.view" id="crm_case_tree_view_leads_sfs_inherit">
+	        <field name="name">Leads sfs</field>
+	        <field name="model">crm.lead</field>
+	        <field name="type">tree</field>
+	        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+	        <field name="arch" type="xml">
+	        	<field name="stage_id" position="after">
+	        		<field name="creator_id" invisible="1"/>
+	        	</field>
+	        </field>
+        </record>
+        
+        <record id="view_crm_case_leads_filter_sfs_search" model="ir.ui.view">
+	        <field name="name">CRM - Leads Search sfs</field>
+	        <field name="model">crm.lead</field>
+	        <field name="type">search</field>
+	        <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+	        <field name="arch" type="xml">
+	        	<filter string="Salesman" position="after">
+	        		<filter string="Creador" icon="terp-personal" domain="[]" context="{'group_by':'creator_id'}"/>
+	        	</filter>
+	        </field>
+        </record>
+        
+	</data>
+</openerp>

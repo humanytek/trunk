@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <report string="Product Catlog"
+            model="product.product"
+            auto="True"
+            name="product_catalog_report"
+            rml="sfs_product_catalog/report/catalog_report.jrxml"
+            id="report_jasper_product_catlog"
+            menu="True"
+            report_type="txt"
+            />
+    </data>
+</openerp>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_vinvert_company_inherit" model="ir.ui.view">
+            <field name="name">view.vinvert.company.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="invoice_phrase"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+    <act_window
+        id="crm_helpdesk_partner"
+        name="Helpdesk"
+        res_model="crm.helpdesk"
+        src_model="res.partner"
+        domain="[('partner_id', '=', active_id)]"
+    />
+
+
+    </data>
+</openerp>

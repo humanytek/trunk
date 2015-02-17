@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="invoice_form_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.form</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+                <field name="arch" type="xml">
+                     <xpath expr="//field[@name='company_id']" position="after">
+                     	<field name="partners_id" invisible = "1"/>
+                        <field name="address_id" domain="[('partner_id','=',partners_id)]"
+                                attrs="{'readonly':[('state','!=','draft')]}"/>
+                    </xpath>
+                </field>
+        </record>
+    </data>
+</openerp>

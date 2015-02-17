@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+<!-- ==========================Purchase order inheritance and adding Non deductible Expenses========================== -->
+        <record id="view_non_deductible_expence" model="ir.ui.view">
+            <field name="name">view.nondeductible.expence</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+	             <xpath expr="/form/notebook/page[@string='Delivery &amp; Invoicing']" position="after">
+	              	<page string = "Non Deductible Expenses" groups="base.group_extended">
+                		<field name="nondeduct_ids" nolabel="1" colspan="4" default_get="{'company': company_id,}"/>
+                		<field name="nonded_total"/>
+                		<field name="total_quantity" invisible="1"/>
+                	</page>
+	             </xpath>
+	             <xpath expr="/form/notebook/page/field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+	              	   <field name="total_unit_price_exp" />
+	             </xpath>
+
+            </field>
+        </record>
+
+<!-- ==========================================View for the table nondeductible.expense===================================== -->
+
+        <record id="non_ded_expence_form" model="ir.ui.view">
+            <field name="name">non_ded_expence_form</field>
+            <field name="model">nondeductible.expense</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Non Deductible Expense">
+                	<field name="expense_name"/>
+					<newline/>
+					<group col="8" colspan="4">
+	                    <field name="amount"/>
+	                    <field name="currency_id" on_change="onchange_currency(currency_id)"/>
+	                    <field name="rate"/>
+	                    <field name="amount_in_comp_currency"/>
+                    </group>
+
+
+                </form>
+            </field>
+        </record>
+
+        <record id="non_ded_expence_tree" model="ir.ui.view">
+            <field name="name">non_ded_expence_tree</field>
+            <field name="model">nondeductible.expense</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Non Deductible Expense">
+	                    <field name="expense_name"/>
+	                    <field name="amount"/>
+	                    <field name="currency_id"/>
+	                    <field name="rate"/>
+	                    <field name="amount_in_comp_currency"/>
+                </tree>
+            </field>
+        </record>
+
+
+     <record id="action_non_ded_expense" model="ir.actions.act_window">
+            <field name="name">Non deductible Expenses</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nondeductible.expense</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ==================================Account invoice inherit==================================== -->
+
+    <record id="view_invoice_inherit" model="ir.ui.view">
+            <field name="name">view.invoice.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+	        	<xpath expr="/form/notebook/page[@string='Invoice']" position="after">
+	              	<page string = "Expenses">
+	              		<field name="expences_ids" nolabel="1" colspan="4" readonly="1"/>
+
+                	</page>
+	             </xpath>
+            </field>
+     </record>
+
+
+
+    </data>
+</openerp>

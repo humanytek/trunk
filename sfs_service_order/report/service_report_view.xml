@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="view_service_report_tree" model="ir.ui.view">
+        <field name="name">service.report.tree</field>
+        <field name="model">service.report</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Service Report">
+                    <field name="customer_id" invisible="1"/>
+                    <field name="customer_device_id" invisible="1"/>
+                    <field name="date"/>
+                    <field name="real_install_date"/>
+                    <field name="order_state"/>
+                    <field name="order_line_state"/>
+                    <field name="service"/>
+                    <field name="economic_num"/>
+                    <field name="sim_card_number"/>
+                    <field name="installator_id"/>
+                    <field name="sale_order_id"/>
+                    <field name="service_order"/>
+                    <field name="problem_id"/>
+                    <field name="sales_man_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_service_report_search" model="ir.ui.view">
+        <field name="name">service.report.search</field>
+        <field name="model">service.report</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Service Report">
+                <group colspan="4">
+                    <field name="customer_id"/>
+                    <field name="customer_device_id"/>
+                    <separator orientation="vertical"/>
+                    <field name="date"/>
+                    <field name="real_install_date"/>
+                 </group>
+                    <newline/>
+                  <group expand="0" string="Extended Filters...">
+                    <field name="order_state"/>
+                    <field name="order_line_state"/>
+                    <separator orientation="vertical"/>
+                    <field name="lot"/>
+                    <field name="service"/>
+                    <separator orientation="vertical"/>
+                    <field name="economic_num"/>
+                    <field name="sim_card_number"/>
+                    <newline/>
+                    <field name="installator_id"/>
+                    <field name="sale_order_id"/>
+                    <separator orientation="vertical"/>
+                    <field name="service_order"/>
+                    <field name="problem_id"/>
+                    <field name="sales_man_id"/>
+                  </group>
+                <newline/>
+                <group string="Group By...">
+                    <filter string="Customer" context="{'group_by': 'customer_id'}"/>
+                    <filter string="Device" context="{'group_by': 'customer_device_id'}"/>
+                    <separator orientation="vertical"/>
+                    <filter string="State of service order" context="{'group_by': 'order_state'}"/>
+                    <filter string="State of device" context="{'group_by': 'order_line_state'}"/>
+                    <separator orientation="vertical"/>
+                    <filter string="Date of Service Order" context="{'group_by': 'date'}"/>
+                    <filter string="Date of Service Order Line" context="{'group_by': 'real_install_date'}"/>
+                    <separator orientation="vertical"/>
+                    <filter string="Service" context="{'group_by': 'service'}"/>
+               
+               </group>
+               <newline/>
+               <group expand="0" string="Extended Grouping...">
+                    <filter string="Service Order Sequence" context="{'group_by': 'service_order'}"/>
+                    <filter string="Problem" context="{'group_by': 'problem_id'}"/>
+                    <separator orientation="vertical"/>
+                    <filter string="Salesman" context="{'group_by': 'sales_man_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_service_report" model="ir.actions.act_window">
+        <field name="name">Service Order Line Analysis</field>
+        <field name="res_model">service.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph</field>
+        <field name="search_view_id" ref="view_service_report_search"/>
+        <field name="view_id" ref="view_service_report_tree"/>
+    </record>
+
+<!--	<menuitem name="Service Reporting"-->
+<!--    	id="menu_action_service_reporting"-->
+<!--    	parent="menu_service"-->
+<!--    />-->
+<!--    <menuitem name="Service Order Line Analysis"-->
+<!--    	id="menu_action_service_order_line_filter"-->
+<!--    	action="action_service_report"-->
+<!--    	parent="menu_action_service_reporting"-->
+<!--    />-->
+    
+    <menuitem action="action_service_report" id="menu_action_service_order_line_filter" parent="base.next_id_64" sequence="2"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+
+				<record model="ir.ui.view" id="medical_medicament_tree_inherit_1">
+                    <field name="name">Medicament list</field>
+                        <field name="model">medical.medicament</field>
+                        <field name="type">tree</field>
+                        <field name="inherit_id" ref="medical.medical_medicament_tree"/>
+                        <field name="arch" type="xml">
+	                        <field name="price" position="after">
+	                        	<field name="qty_available" />
+	                        	<field name="virtual_available" />
+	                        	<field name="production_state"/>
+	                        </field>
+                    </field>
+                 </record>
+
+
+	</data>
+</openerp>

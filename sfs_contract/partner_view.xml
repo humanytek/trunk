@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            	<data>
+                <xpath expr="/form/notebook/page[@string='Accounting']" position="after">
+                	<page string="Legal Information">
+                		<separator string="Legal Information Details" colspan="4"/>
+                		<field name="legal_rep_name"/>
+                    	<field name="public_writing_no"/>
+                    	<field name="public_writing_date"/>
+                    	<field name="notary_person"/>
+                    	<field name="notary_office_no"/>
+                    	<field name="notary_office_loc"/>
+                    	<field name="attorney_rep_no"/>
+                    	<field name="attorney_date"/>
+                    	<field name="notary_person_no"/>
+                    	<field name="city_notary_person"/>
+                    	<group colspan="4" col="4">
+                    	<separator string="Guarantor Details" colspan="4"/>
+                    	<field name="guarantor_name"/>
+                    	<field name="guarantor_street" colspan="4"/>
+                    	<field name="guarantor_street1" colspan="4"/>
+                    	<field name="guarantor_zip"/>
+                    	<field name="guarantor_city"/>
+                    	<field name="guarantor_phone"/>
+                    	</group>
+                    	<separator string="Interest Details" colspan="4"/>
+                    	<field name="moratory_interest"/>
+                    </page>
+                </xpath>
+            </data>
+            </field>
+        </record>
+
+</data>
+</openerp>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+      <record id="view_device_commision_form" model="ir.ui.view">
+            <field name="name">device.commision.form</field>
+            <field name="model">device.commision</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Device Commision">
+                    <field name="name" />
+                    <field name="amount"/>
+                </form>
+            </field>
+      </record>
+            
+      <record id="view_device_commision_tree" model="ir.ui.view">
+            <field name="name">device.commision.tree</field>
+            <field name="model">device.commision</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Device Commision">
+                    <field name="name"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+    
+       <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="/form/notebook/page[@string='Notes']" position="after">
+                    <page string="Commision">
+                       <field name="device_ids" nolabel="1"/>
+                    </page>
+                </xpath>
+            </data>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    	<record model="ir.ui.view" id="agreement_template_tree">
+            <field name="name">template.agreement.tree</field>
+            <field name="model">template.agreement</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree string="Agreement Templates">
+            	<field name="name" />
+            </tree>
+            </field>
+            </record>
+
+		<record model="ir.ui.view" id="agreement_template_form">
+            <field name="name">template.agreement.form</field>
+            <field name="model">template.agreement</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            	<form string="Agreement Templates">
+            	<field name="name"/>
+
+            	<separator colspan="4" string="Special Agreement" />
+            	<field name="notes" nolabel="1" colspan="4"/>
+
+				<group col="4" colspan="2">
+				<separator colspan="4" string="Expression Builder" />
+					<notebook>
+                      <page string="Insert Simple Field">
+				<field name="model_object_field"
+                                            domain="[('model_id','=','sale.contract'),('ttype','!=','one2many'),('ttype','!=','many2many')]"
+                                            on_change="onchange_model_object_field(model_object_field,context)"
+                                            colspan="4" />
+                <field name="sub_object" readonly="1" colspan="4" />
+                <field name="sub_model_object_field"
+                                            domain="[('model_id','=',sub_object),('ttype','!=','one2many'),('ttype','!=','many2many')]"
+                                            colspan="4"
+                                            attrs="{'readonly':[('sub_object','=',False)],'required':[('sub_object','!=',False)]}"
+                                            on_change="onchange_sub_model_object_field(model_object_field,sub_model_object_field,context)" />
+            	<field name="null_value" colspan="4"
+                                            on_change="onchange_null_value(model_object_field,sub_model_object_field,null_value,context)" />
+            	<field name="copyvalue" colspan="4" />
+            	</page>
+                </notebook>
+                 </group>
+            </form>
+            </field>
+
+            </record>
+
+            <record model="ir.actions.act_window" id="action_agreement_template">
+            <field name="name">Agreement Templates</field>
+            <field name="res_model">template.agreement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="agreement_template_tree" />
+        </record>
+		<menuitem name="Agreement Templates" id="menu_agreement_template"
+            parent="menu_contract_config" action="action_agreement_template" sequence="5"/>
+        </data>
+</openerp>

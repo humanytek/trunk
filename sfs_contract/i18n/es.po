@@ -1,0 +1,468 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* sfs_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.3\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-14 09:03+0000\n"
+"PO-Revision-Date: 2012-02-14 09:03+0000\n"
+"Last-Translator: Prajul\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sfs_contract
+#: field:sale.contract,origin:0
+msgid "Source Document"
+msgstr "Fuente del documento"
+
+#. module: sfs_contract
+#: field:sale.contract,new_contract:0
+msgid "Generate New Contract"
+msgstr "Generar un nuevo contrato"
+
+#. module: sfs_contract
+#: field:sale.contract,renewed:0
+msgid "Renewed"
+msgstr "Renovado"
+
+#. module: sfs_contract
+#: field:sale.contract,date:0
+msgid "Elaboration Date"
+msgstr "Fecha de elaboración"
+
+#. module: sfs_contract
+#: view:contract.make.invoice:0
+msgid "Create invoices"
+msgstr "Cree facturas"
+
+#. module: sfs_contract
+#: sql_constraint:sale.contract.type:0
+msgid "Invoice Interval Quantity should be grater than 0"
+msgstr "Cantidad de facturas intervalo debe ser mayor que 0"
+
+#. module: sfs_contract
+#: field:contract.make.invoice,qty:0
+#: field:sale.contract.type,invoice_qty:0
+#: field:sale.contract.type,qty:0
+msgid "Interval Quantity"
+msgstr "Intervalo Cantidad"
+
+#. module: sfs_contract
+#: view:sale.contract:0
+#: view:sale.contract.type:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: sfs_contract
+#: field:sale.contract,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: sfs_contract
+#: view:contract.make.invoice:0
+msgid "Do you really want to create the invoice(s) ?"
+msgstr "¿De verdad desea crear la factura (s)?"
+
+#. module: sfs_contract
+#: view:sale.contract.type:0
+msgid "Interval unit"
+msgstr "Intervalo de la unidad"
+
+#. module: sfs_contract
+#: selection:contract.make.invoice,intervel_unit:0
+#: selection:sale.contract,intervel_unit:0
+#: selection:sale.contract,invoice_intervel_unit:0
+#: selection:sale.contract.type,intervel_unit:0
+#: selection:sale.contract.type,invoice_intervel_unit:0
+msgid "Weeks"
+msgstr "Semanas"
+
+#. module: sfs_contract
+#: model:ir.actions.act_window,name:sfs_contract.action_view_contract_make_invoice
+msgid "Make Invoices"
+msgstr "Crear facturas"
+
+#. module: sfs_contract
+#: view:sale.contract:0
+msgid "Search Contract"
+msgstr "Búsqueda Contratos"
+
+#. module: sfs_contract
+#: field:sale.contract,name:0
+msgid "Contract Number"
+msgstr "Número del contrato"
+
+#. module: sfs_contract
+#: field:sale.contract.type,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: sfs_contract
+#: field:contract.make.invoice,product_id:0
+#: field:sale.contract,product_id:0
+#: view:sale.contract.type:0
+#: field:sale.contract.type,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: sfs_contract
+#: sql_constraint:sale.order:0
+msgid "Order Reference must be unique !"
+msgstr "¡La referencia del pedido debe ser única!"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/contract.py:172
+#: code:addons/sfs_contract/contract.py:189
+#, python-format
+msgid "Error !"
+msgstr "Error !"
+
+#. module: sfs_contract
+#: field:sale.contract,invoice_create:0
+#: field:sale.contract.type,invoice_create:0
+msgid "Invoice On"
+msgstr "En la factura"
+
+#. module: sfs_contract
+#: selection:sale.contract,invoice_create:0
+#: selection:sale.contract.type,invoice_create:0
+msgid "Create Invoice and Reschedule"
+msgstr "Crear factura y volver a programar"
+
+#. module: sfs_contract
+#: model:ir.module.module,shortdesc:sfs_contract.module_meta_information
+msgid "Service Management - Contracts"
+msgstr "Servicio de Gestión - Contratos"
+
+#. module: sfs_contract
+#: field:contract.make.invoice,unit_price:0
+msgid "Price"
+msgstr "Precio"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/contract.py:173
+#, python-format
+msgid "There is no income account defined ' #                                    'for this product: \"%s\" (id:%d)"
+msgstr "There is no income account defined ' #                                    'for this product: \"%s\" (id:%d)"
+
+#. module: sfs_contract
+#: view:sale.contract.type:0
+msgid "Search Contract Type"
+msgstr "Buscar Tipo de contrato"
+
+#. module: sfs_contract
+#: field:sale.contract,sign_date:0
+msgid "Sign Date"
+msgstr "Firma Fecha"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/contract.py:190
+#, python-format
+msgid "There is no income category account defined in default Properties for Product Category or Fiscal Position is not defined !"
+msgstr "No hay ninguna cuenta de la categoría de ingresos definido por defecto en las propiedades de la categoría del producto o de la situación fiscal no está definida!"
+
+#. module: sfs_contract
+#: field:contract.make.invoice,intervel_unit:0
+#: field:sale.contract,intervel_unit:0
+#: field:sale.contract,invoice_intervel_unit:0
+#: field:sale.contract.type,intervel_unit:0
+#: field:sale.contract.type,invoice_intervel_unit:0
+msgid "Interval Unit"
+msgstr "Intervalo de la Unidad"
+
+#. module: sfs_contract
+#: field:sale.contract,automated:0
+msgid "Automated"
+msgstr "Automatizado"
+
+#. module: sfs_contract
+#: field:sale.contract.type,active:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: sfs_contract
+#: model:ir.model,name:sfs_contract.model_sale_contract
+msgid "sale.contract"
+msgstr "sale.contract"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/sale.py:16
+#, python-format
+msgid "The quotation '%s' has been converted to a sales order."
+msgstr "The quotation '%s' has been converted to a sales order."
+
+#. module: sfs_contract
+#: field:sale.contract,expired:0
+#: selection:sale.contract,state:0
+msgid "Expired"
+msgstr "Expirado"
+
+#. module: sfs_contract
+#: help:sale.contract.type,invoice_intervel_unit:0
+msgid "Specifies weather Invoice Interval Quantity specifies number of days, week or months"
+msgstr "Especifica si la cantidad de intervalo factura número especificado de días, semanas o meses"
+
+#. module: sfs_contract
+#: field:sale.contract,expire_date:0
+msgid "Expiration Date"
+msgstr "Fecha de expiración"
+
+#. module: sfs_contract
+#: field:sale.contract,next_invoice_date:0
+msgid "Next Invoice Date"
+msgstr "Fecha de la próxima factura"
+
+#. module: sfs_contract
+#: field:contract.make.invoice,partner_id:0
+#: view:sale.contract:0
+#: field:sale.contract,partner_id:0
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: sfs_contract
+#: field:contract.make.invoice,sale_order_id:0
+#: view:sale.contract:0
+#: field:sale.contract,sale_order_id:0
+msgid "Sale Order"
+msgstr "Venta Orden"
+
+#. module: sfs_contract
+#: sql_constraint:sale.contract.type:0
+msgid "Interval Quantity should be greater than 0"
+msgstr "Cantidad de intervalo debe ser mayor que 0"
+
+#. module: sfs_contract
+#: model:ir.module.module,description:sfs_contract.module_meta_information
+msgid "\n"
+"    Module to create contracts.\n"
+"\n"
+"    "
+msgstr "\n"
+"    Módulo para crear contratos.\n"
+"\n"
+"    "
+
+#. module: sfs_contract
+#: selection:sale.contract,invoice_create:0
+#: selection:sale.contract.type,invoice_create:0
+msgid "Reschedule and Create Invoice"
+msgstr "Volver a programar y crear facturas"
+
+#. module: sfs_contract
+#: view:sale.contract.type:0
+#: field:sale.contract.type,note:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: sfs_contract
+#: selection:contract.make.invoice,intervel_unit:0
+#: selection:sale.contract,intervel_unit:0
+#: selection:sale.contract,invoice_intervel_unit:0
+#: selection:sale.contract.type,intervel_unit:0
+#: selection:sale.contract.type,invoice_intervel_unit:0
+msgid "Months"
+msgstr "Meses"
+
+#. module: sfs_contract
+#: selection:contract.make.invoice,intervel_unit:0
+#: selection:sale.contract,intervel_unit:0
+#: selection:sale.contract,invoice_intervel_unit:0
+#: selection:sale.contract.type,intervel_unit:0
+#: selection:sale.contract.type,invoice_intervel_unit:0
+msgid "Days"
+msgstr "Días"
+
+#. module: sfs_contract
+#: field:sale.contract,automated_renew:0
+msgid "Automated Renew"
+msgstr "Renovar automatizada"
+
+#. module: sfs_contract
+#: model:ir.actions.act_window,name:sfs_contract.action_contract_type_form
+#: model:ir.ui.menu,name:sfs_contract.menu_action_contract_type_form
+#: view:sale.contract:0
+#: field:sale.contract,contract_type_id:0
+#: view:sale.contract.type:0
+#: field:sale.order.line,contract_type_id:0
+msgid "Contract Type"
+msgstr "Tipo de Contrato"
+
+#. module: sfs_contract
+#: model:ir.model,name:sfs_contract.model_contract_make_invoice
+msgid "Contract Make_invoice"
+msgstr "Contrato Make_invoice"
+
+#. module: sfs_contract
+#: help:sale.contract,invoice_create:0
+#: help:sale.contract.type,invoice_create:0
+msgid "If create Invoice and reschedule, invoice will be created on the day of signing else invoice will be created on the scheduled date"
+msgstr "Si crea la factura y volver a programar, la factura se creará en el día de la firma de otra factura, se creará en la fecha prevista"
+
+#. module: sfs_contract
+#: field:contract.make.invoice,contract_id:0
+#: model:ir.actions.act_window,name:sfs_contract.action_contract_form
+#: model:ir.ui.menu,name:sfs_contract.menu_action_contract_form
+#: model:ir.ui.menu,name:sfs_contract.menu_contract_config
+#: model:ir.ui.menu,name:sfs_contract.menu_sale_contract
+#: view:sale.contract:0
+#: field:sale.order.line,contract:0
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/contract.py:272
+#, python-format
+msgid "Contract Renewed.\n"
+"\n"
+"Contract names: %s\n"
+"\n"
+""
+msgstr "Contract Renewed.\n"
+"\n"
+"Contract names: %s\n"
+"\n"
+""
+
+#. module: sfs_contract
+#: selection:sale.contract,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: sfs_contract
+#: help:sale.contract.type,qty:0
+msgid "Specifies the day/month/week before which contract is renewed"
+msgstr "Especifica el día / mes / semana antes de que se contrato se renueva"
+
+#. module: sfs_contract
+#: help:sale.contract,new_contract:0
+msgid "Specifies the number of days"
+msgstr "Especifica el número de días"
+
+#. module: sfs_contract
+#: help:sale.contract.type,invoice_qty:0
+msgid "Specifies the difference between two invoice printing dates"
+msgstr "Especifica la diferencia entre dos fechas de impresión de facturas"
+
+#. module: sfs_contract
+#: model:ir.model,name:sfs_contract.model_sale_contract_type
+msgid "sale.contract.type"
+msgstr "sale.contract.type"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/contract.py:275
+#, python-format
+msgid "Contract Renewed"
+msgstr "Contrato renovado"
+
+#. module: sfs_contract
+#: field:sale.contract,invoice_qty:0
+#: field:sale.contract,qty:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/wizard/contract_invoice.py:136
+#, python-format
+msgid "Invoice cannot be created for this Sales Order Line due to one of the following reasons:\n"
+"1.The state of this sales order line is either \"draft\" or \"cancel\"!\n"
+"2.The Sales Order Line is Invoiced!"
+msgstr "Invoice cannot be created for this Sales Order Line due to one of the following reasons:\n"
+"1.The state of this sales order line is either \"draft\" or \"cancel\"!\n"
+"2.The Sales Order Line is Invoiced!"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/contract.py:221
+#, python-format
+msgid "New expired Contract.\n"
+"\n"
+"Contract names: %s\n"
+"\n"
+""
+msgstr "New expired Contract.\n"
+"\n"
+"Contract names: %s\n"
+"\n"
+""
+
+#. module: sfs_contract
+#: help:sale.order.line,contract:0
+msgid "Check if you want to create contract"
+msgstr "Compruebe si usted desea crear contrato de"
+
+#. module: sfs_contract
+#: selection:sale.contract,state:0
+msgid "Signed"
+msgstr "Firmado"
+
+#. module: sfs_contract
+#: view:contract.make.invoice:0
+msgid "Create Invoices"
+msgstr "Crear facturas"
+
+#. module: sfs_contract
+#: view:sale.contract:0
+msgid "Sign"
+msgstr "Firmar"
+
+#. module: sfs_contract
+#: field:sale.contract,automated_renew_date:0
+msgid "Automated Date"
+msgstr "Fecha automatizada"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/wizard/contract_invoice.py:136
+#, python-format
+msgid "Warning"
+msgstr "Advertencia"
+
+#. module: sfs_contract
+#: view:sale.contract:0
+msgid "Contract Details"
+msgstr "Detalles del Contrato"
+
+#. module: sfs_contract
+#: view:sale.contract.type:0
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: sfs_contract
+#: view:contract.make.invoice:0
+#: view:sale.contract:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: sfs_contract
+#: selection:sale.contract,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: sfs_contract
+#: help:sale.contract.type,intervel_unit:0
+msgid "Specifies the renewal day is specified in days,week or month"
+msgstr "Especifica el día de renovación se especifica en el día, semana o mes"
+
+#. module: sfs_contract
+#: model:ir.model,name:sfs_contract.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: sfs_contract
+#: code:addons/sfs_contract/contract.py:224
+#, python-format
+msgid "Contract Expired"
+msgstr "Contrato que haya expirado"
+
+#. module: sfs_contract
+#: model:ir.model,name:sfs_contract.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: sfs_contract
+#: view:sale.contract.type:0
+msgid "Expiration"
+msgstr "Vencimiento"

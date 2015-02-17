@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_pos_order_invoice_inherit" model="ir.ui.view">
+            <field name="name">pos.order.invoice.inherit</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_invoice']" position="attributes">
+                    <attribute name="attrs">{'readonly': ['|', ('partner_id','=',False), ('with_invoice', '=', False)]}</attribute>
+                    <attribute name="confirm">Esta factura no puede generar la poliza contable, sera creada sin poliza</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

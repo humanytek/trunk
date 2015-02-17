@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.property" id="standard_price">
+            <field name="name">standard_price</field>
+            <field name="fields_id" search="[('model','=','product.template'),
+                        ('name','=','name')]"/>
+        </record>
+        <!--<field name="value" eval="0.00"/>-->
+    </data>
+</openerp>

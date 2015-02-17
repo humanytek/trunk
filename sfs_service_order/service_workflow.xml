@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="wkf_service" model="workflow">
+            <field name="name">service.order.basic</field>
+            <field name="osv">service.order</field>
+            <field name="on_create">True</field>
+        </record>
+        
+        <!-- Activity -->
+        
+        <record id="act_pendining" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_service"/>
+            <field name="flow_start">True</field>
+            <field name="name">pending</field>
+            <field name="kind">function</field>
+            <field name="action">action_state_change("pending")</field>
+            <field name="split_mode">OR</field>
+        </record>
+        
+        <record id="act_installer" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_service"/>
+            <field name="name">installer_assigned</field>
+            <field name="kind">function</field>
+            <field name="action">action_state_change("inst_asigned")</field>
+        </record>
+        
+         <record id="act_in_process" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_service"/>
+            <field name="name">in process</field>
+            <field name="kind">function</field>
+            <field name="action">action_state_change("in_process")</field>
+        </record>
+        
+        <record id="act_activation_pending" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_service"/>
+            <field name="name">activation pending</field>
+            <field name="kind">function</field>
+            <field name="action">action_state_change("act_pending")</field>
+        </record>
+        
+        <record id="act_done" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_service"/>
+            <field name="name">done</field>
+            <field name="flow_stop">True</field>
+            <field name="kind">stopall</field>
+            <field name="action">action_state_change("done")</field>
+        </record>
+        
+        <record id="act_cancelled" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_service"/>
+            <field name="name">cancelled</field>
+            <field name="kind">function</field>
+            <field name="action">action_state_change("cancelled")</field>
+        </record>
+        
+        <!-- Transistion -->
+        
+        <record id="trans_penting_installer" model="workflow.transition">
+            <field name="act_from" ref="act_pendining"/>
+            <field name="act_to" ref="act_installer"/>
+            <field name="signal">installer_assigned</field>
+        </record>
+        
+        <record id="trans_in_process" model="workflow.transition">
+            <field name="act_from" ref="act_installer"/>
+            <field name="act_to" ref="act_in_process"/>
+            <field name="signal">in_process</field>
+        </record>
+        
+        <record id="trans_activation_pending" model="workflow.transition">
+            <field name="act_from" ref="act_in_process"/>
+            <field name="act_to" ref="act_activation_pending"/>
+            <field name="signal">activation_pending</field>
+        </record>
+        
+         <record id="trans_done" model="workflow.transition">
+            <field name="act_from" ref="act_activation_pending"/>
+            <field name="act_to" ref="act_done"/>
+            <field name="signal">done</field>
+        </record>
+        
+        <record id="trans_cancelled" model="workflow.transition">
+            <field name="act_from" ref="act_pendining"/>
+            <field name="act_to" ref="act_cancelled"/>
+            <field name="signal">cancelled</field>
+        </record>
+        
+        <record id="trans_pending" model="workflow.transition">
+            <field name="act_from" ref="act_cancelled"/>
+            <field name="act_to" ref="act_pendining"/>
+            <field name="signal">re_assigned</field>
+        </record>
+        
+    </data>
+</openerp>

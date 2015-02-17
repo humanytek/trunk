@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	<record id="view_wizard_data_import" model="ir.ui.view">
+			<field name="name">data.import.form</field>
+			<field name="model">data.import</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Import Product">
+					<group colspan="4" col="2">				
+						<field name="model"/>
+						<field name="csv_file"/>
+						<separator colspan="4"/>
+						<group colspan="4" col="4">
+						<button name="import_csv" icon="gtk-ok" type="object" string="Import" />
+						<button icon="gtk-cancel" special="cancel" string="Cancel" />
+						</group>
+					</group>
+				</form>
+			</field>
+		</record>
+	
+	
+	<record id="action_wizard_data_import" model="ir.actions.act_window">
+			<field name="name">Import Data</field>
+			<field name="res_model">data.import</field>
+			<field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>    
+		</record>
+	
+	<menuitem
+            id="menu_data_import"
+            name="Data Import"
+            parent="base.menu_administration" sequence="100"/>
+            
+		<menuitem
+            action="action_wizard_data_import"
+            id="wizard_menu_data_import"
+            parent="menu_data_import" sequence="1"/>
+	</data>
+</openerp>

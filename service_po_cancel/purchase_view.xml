@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_purchase_order_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page/group[@col='11']" position="attributes">
+                    <attribute name="col">12</attribute>
+                </xpath>
+                <xpath expr="//button[@name='purchase_cancel']" position="before">
+                    <group attrs="{'invisible': [('is_service_purchase', '=', False)]}">
+                        <button groups="service_po_cancel.group_purchase_cancel" name="done_purchase_cancel" confirm="Are you sure you want to cancel the purchase order?" string="Cancel" type="object" icon="gtk-cancel" attrs="{'invisible': [('state', 'not in', ['done'])]}"/>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='fiscal_position']" position="after">
+                    <field name="is_service_purchase"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

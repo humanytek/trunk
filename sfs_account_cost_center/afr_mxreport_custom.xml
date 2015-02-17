@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="inh_account_mxreport_def_form">
+	        <field name="name">Account mxreport Inherit</field>
+	        <field name="model">account.mx_report_definition</field>
+	        <field name="type">form</field>
+	        <field name="inherit_id" ref="hesatec_mx_accounting_reports_v61.view_account_mx_report_definition_form"/>
+	        <field name="arch" type="xml">
+	        	<xpath expr="//notebook/page[@string='SubReportes']" position="after">
+	        		<page string="Cost Centers">
+	        			<field name="cost_center_ids" nolabel="1"/>
+	        		</page>
+	        	</xpath>
+	        </field>	
+        </record>
+        
+        <record model="ir.ui.view" id="inh_afr_form">
+	        <field name="name">Afr Inherit</field>
+	        <field name="model">afr</field>
+	        <field name="type">form</field>
+	        <field name="inherit_id" ref="account_financial_report.account_financial_report_view"/>
+	        <field name="arch" type="xml">
+	        		<separator string="Account's Sign Conventions" position="before">
+	        			<separator string="Cost Centers" colspan="4"/>
+	        				<field name="cost_center_ids" nolabel="1"/>
+	        		</separator>	
+	        </field>	
+        </record>
+	</data>
+</openerp>

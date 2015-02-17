@@ -1,0 +1,14 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_engine_brand_manager","engine.brand","model_engine_brand","base.group_service_order_manager",1,1,1,1
+"access_engine_model_manager","engine.model","model_engine_model","base.group_service_order_manager",1,1,1,1
+"access_service_order_manager","service.order","model_service_order","base.group_service_order_manager",1,1,1,1
+"access_service_order_line_manager","service.order.line","model_service_order_line","base.group_service_order_manager",1,1,1,1
+"access_service_report_manager","service.report","model_service_report","base.group_service_order_manager",1,1,1,1
+"access_service_problem","service.problem","model_service_problem","base.group_service_order_manager",1,1,1,1
+"access_device_commision_user","device.commision","model_device_commision","base.group_hr_user",1,0,0,0
+"access_device_commision_system_user","device.commision","model_device_commision","base.group_user",1,1,1,1
+"access_vehicle_brand","vehicle.brand","model_vehicle_brand","base.group_service_order_manager",1,1,1,1
+"access_vehicle_model","vehicle.model","model_vehicle_model","base.group_service_order_manager",1,1,1,1
+"access_vehicle_protocol","vehicle.protocol","model_vehicle_protocol","base.group_service_order_manager",1,1,1,1
+"access_service_order_line_report","service.order.line.report","model_service_order_line_report","base.group_service_order_manager",1,1,1,1
+"access_vehicle_type_manager","vehicle.type","model_vehicle_type","base.group_service_order_manager",1,1,1,1

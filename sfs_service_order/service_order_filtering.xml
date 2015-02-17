@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+	<record model="ir.ui.view" id="service_order_line_filter_search">
+		<field name="name">service.order.line.filter.search</field>
+        <field name="model">service.order.line</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Service Order Line">
+                <group colspan="4">
+                    <field name="brand" string="Customer(device)"/>
+                    <field name="sr_inst_start_date" string="Date"/>
+                    <field name="sr_inst_end_date"/>
+                    <field name="state"/>
+                    <newline/>
+                    <field name="name"/>
+                    <field name="economic_num"/>
+                    <field name="phone"/>
+                    <field name="installator_id"/>
+                    <field name="sr_problem"/>
+                </group>
+                <newline/>
+                <group string="Group By...">
+                    <filter string="Device" context="{'group_by': 'brand'}"/>
+                    <filter string="State of service order line" context="{'group_by': 'state'}"/>
+                    <filter string="Date of service order line" context="{'group_by': 'sr_inst_end_date'}"/>
+                    <filter string="Service" context="{'group_by': 'name'}"/>
+                    <filter string="Problem" context="{'group_by': 'sr_problem'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+	<record model="ir.ui.view" id="service_order_line_filter_tree">
+	    <field name="name">service.order.line.filter.tree</field>
+        <field name="model">service.order.line</field>
+        <field name="type">tree</field>
+        	<field name="arch" type="xml">
+	            <tree string="Service Order Line">
+	            	<field name="brand" string="Device"/>
+	            	<field name="state"/>
+	            	<field name="sr_inst_end_date" />
+	            	<field name="name"/>
+	            	<field name="sr_problem"/>
+	            </tree>
+        	</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_service_order_filter_form">
+        <field name="name">Service Order Line Analysis</field>
+        <field name="res_model">service.order.line</field>
+        <field name="type">ir.actions.act_window</field>
+       <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="service_order_line_filter_tree"/>
+        <field name="search_view_id" ref="service_order_line_filter_search" />
+    </record>
+	<menuitem name="Service Reporting"
+    	id="menu_action_service_reporting"
+    	parent="menu_service"
+    />
+    <menuitem name="Service Order Line Analysis"
+    	id="menu_action_service_order_line_filter"
+    	action="action_service_order_filter_form"
+    	parent="menu_action_service_reporting"
+    />
+
+	</data>
+</openerp>

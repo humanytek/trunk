@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_contract_make_invoice" model="ir.ui.view">
+            <field name="name">Make Invoice</field>
+            <field name="model">contract.make.invoice</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+	            <form string="Create invoices">
+	            	<group colspan="4" col="2">
+	             	<field name="partner_id"/>
+	             	<field name="sale_order_id"/>
+	             	<field name="contract_id" invisible="1"/>
+             		<field name="product_id"/>
+             		</group>
+             		<field name="qty"/>
+             		<field name="intervel_unit"/>
+	             	<group colspan="4" col="4">
+	                	<separator colspan="4" string="Do you really want to create the invoice(s) ?" />
+	                	<button special="cancel" string="Cancel" icon="gtk-cancel"/>
+	                	<button name="make_invoices" string="Create Invoices" type="object" icon="terp-gtk-go-back-rtl"/>
+	            	</group>
+	            </form>
+       		</field>
+    	</record>
+
+        <record id="action_view_contract_make_invoice" model="ir.actions.act_window">
+            <field name="name">Make Invoices</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">contract.make.invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_contract_make_invoice"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

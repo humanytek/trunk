@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_mrp_board_inherit" model="ir.ui.view">
+            <field name="name">mrp.board.inherit</field>
+            <field name="model">board.board</field>
+            <field name="inherit_id" ref="mrp.board_mrp_manager_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//action[@string='Stock Value Variation']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_order_form_install_doc">
+            <field name="name">sale.order.form.install_doc</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_ids']" position="after">
+                <separator colspan="4" string="Installation Document"/>
+                <field colspan="4" name="install_doc_ids" nolabel="1" widget="many2many"/>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</openerp>

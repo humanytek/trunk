@@ -1,0 +1,7 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_contract_type_manager","sale.contract.type","model_sale_contract_type","group_contract_manager",1,1,1,1
+"access_contract_type_user","sale.contract.type","model_sale_contract_type","group_contract_user",1,1,1,1
+"access_sale_contract_manager","sale.contract","model_sale_contract","group_contract_manager",1,1,1,1
+"access_sale_contract_user","sale.contract","model_sale_contract","group_contract_user",1,1,1,1
+"access_template_agreement_manager","template.agreement","model_template_agreement","group_contract_manager",1,1,1,1
+"access_template_agreement_user","template.agreement","model_template_agreement","group_contract_user",1,1,1,1

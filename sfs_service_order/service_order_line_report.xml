@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False" id="report_service_order_line"
+         model="service.order.line" name="service.order.line"
+          rml="sfs_service_order/report/service_order_line.rml"
+           string="Order line service report"/>
+
+    </data>
+</openerp>

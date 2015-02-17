@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <report auto="False" id="pos_report" menu="False" model="pos.order"
+                name="pos.report" rml="sfs_pos_customisation/report/pos_report.rml"
+                string="Point Of Sale"/>
+        <report
+            id="pos_lines_detail_inherit"
+            string="Details of Sales"
+            model="pos.order"
+            name="pos.details.inherit"
+            auto="False"
+            multi="True"
+            menu="False"
+            rml="point_of_sale/report/pos_details.rml"
+             />
+    </data>
+</openerp>

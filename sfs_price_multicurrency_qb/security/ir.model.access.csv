@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_price_list_employee","price.list employee","model_price_list","base.group_user",1,0,0,0
+"access_price_list_sale_manager","price.list.salemanager","model_price_list","base.group_sale_manager",1,1,1,1
+"access_price_list_sale_user","price.list.saleuser","model_price_list","base.group_sale_salesman",1,0,0,0
+"acess_product_price_type_gruser","product.price.type.gruser","product.model_product_price_type","base.group_user",1,1,1,0

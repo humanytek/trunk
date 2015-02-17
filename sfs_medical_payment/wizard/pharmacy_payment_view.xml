@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record id="view_pharmacy_make_payment" model="ir.ui.view">
+            <field name="name">Make Payment</field>
+            <field name="model">pharmacy.make.payment</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Make Payment">
+                    <group colspan="6" col="6" >
+					<group colspan="3" >
+						<separator string="The cash register must be opened to be able to execute a payment."  />
+					</group>
+					<newline/>
+					<group colspan="6">
+						<field name="journal"/>
+						<field name="payment_date"/>
+						<field name="num_sale" />
+						<field name="amount" />
+						<!--field name="payment_name" /-->
+						<field name="invoice_wanted" />
+						<!--field name="is_acc" /-->
+					</group>
+					<newline/>
+					<group attrs="{'invisible':[('invoice_wanted','=',False)]}" colspan="3">
+						<field name="partner_id" attrs="{'required':[('invoice_wanted', '=', True)]}" colspan="2"/>
+						<field name="pricelist_id" attrs="{'required':[('invoice_wanted', '=', True)]}" colspan="2"/>
+					</group>
+					<separator colspan="6"/>
+					<group colspan="3"/>
+					<group colspan="3">
+						<group colspan="2"/>
+						<group  colspan="2">
+							<button icon="gtk-stop" special="cancel" string="Cancel"/>
+							<button name="check" string="Make Payment" colspan="1" type="object" icon="terp-dolar"/>
+						</group>
+					</group>
+				</group>
+               </form>
+            </field>
+        </record>
+
+    <act_window
+    		name="Make Payment"
+            res_model="pharmacy.make.payment"
+            src_model="medical.prescription.order"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_pharmacy_make_payment"
+            />
+
+    </data>
+</openerp>

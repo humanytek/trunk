@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_install_doc" parent="stock.menu_stock_root" name="Installation Document" sequence="3"/>
+        <menuitem id="menu_install_doc_config" name="Installation Document" parent="stock.menu_stock_configuration" sequence="4"/>
+
+<!--===========================brand=========================-->
+
+        <record model="ir.ui.view" id="install_brand_form">
+            <field name="name">install.brand.form</field>
+            <field name="model">install.brand</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Brand">
+                    <field name="name" />
+                    <field name="code"/>
+                    <separator string="Notes" colspan="4" />
+                    <field name="note"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_brand_tree">
+            <field name="name">install.brand.tree</field>
+            <field name="model">install.brand</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Brand">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_install_brand_form">
+            <field name="name">Brand</field>
+            <field name="res_model">install.brand</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_install_brand_form" id="menu_action_install_brand_form"
+            sequence="2"
+            parent="menu_install_doc_config"/>
+
+<!--===========================model=========================-->
+
+        <record model="ir.ui.view" id="install_model_form">
+            <field name="name">install.model.form</field>
+            <field name="model">install.model</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Model">
+                    <field name="name" />
+                    <field name="code"/>
+                    <separator string="Notes" colspan="4" />
+                    <field name="note"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_model_tree">
+            <field name="name">install.model.tree</field>
+            <field name="model">install.model</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Model">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_install_model_form">
+            <field name="name">Model</field>
+            <field name="res_model">install.model</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_install_model_form" id="menu_action_install_model_form"
+            sequence="2"
+            parent="menu_install_doc_config"/>
+
+ <!--===========================transmission=========================-->
+
+        <record model="ir.ui.view" id="install_transmission_form">
+            <field name="name">install.transmission.form</field>
+            <field name="model">install.transmission</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Transmission">
+                    <field name="name" />
+                    <field name="code"/>
+                    <separator string="Notes" colspan="4" />
+                    <field name="note"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_transmission_tree">
+            <field name="name">install.transmission.tree</field>
+            <field name="model">install.transmission</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Transmission">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_install_transmission_form">
+            <field name="name">Transmission</field>
+            <field name="res_model">install.transmission</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_install_transmission_form" id="menu_action_install_transmission_form"
+            sequence="3"
+            parent="menu_install_doc_config"/>
+
+ <!--==========================retarder==========================-->
+
+        <record model="ir.ui.view" id="install_retarder_form">
+            <field name="name">install.retarder.form</field>
+            <field name="model">install.retarder</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Retarder">
+                    <field name="name" />
+                    <field name="code"/>
+                    <separator string="Notes" colspan="4" />
+                    <field name="note"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_retarder_tree">
+            <field name="name">install.retarder.tree</field>
+            <field name="model">install.retarder</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Retarder">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_install_retarder_form">
+            <field name="name">Retarder</field>
+            <field name="res_model">install.retarder</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_install_retarder_form" id="menu_action_install_retarder_form"
+            sequence="5"
+            parent="menu_install_doc_config"/>
+
+ <!--===========================brake_type=========================-->
+
+        <record model="ir.ui.view" id="install_brake_type_form">
+            <field name="name">install.brake_type.form</field>
+            <field name="model">install.brake.type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Brake Type">
+                    <field name="name" />
+                    <field name="code"/>
+                    <separator string="Notes" colspan="4" />
+                    <field name="note"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_brake_type_tree">
+            <field name="name">install.transmission.tree</field>
+            <field name="model">install.brake.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Brake Type">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_install_brake_type_form">
+            <field name="name">Brake Type</field>
+            <field name="res_model">install.brake.type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_install_brake_type_form" id="menu_action_install_brake_type_form"
+            sequence="4"
+            parent="menu_install_doc_config"/>
+
+<!--===========================installation document=========================-->
+        <record model="ir.ui.view" id="install_doc_search">
+            <field name="name">install.doc.search</field>
+            <field name="model">install.doc</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Installation Document">
+                    <group>
+                        <field name="name"/>
+                        <separator orientation="vertical"/>
+                        <field name="user_id"/>
+                    </group>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_doc_form">
+            <field name="name">install.doc.form</field>
+            <field name="model">install.doc</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Installation Document">
+                    <group colspan="4" col="6">
+                        <group colspan="4" col="4">
+                            <field name="name" />
+                            <field name="origin"/>
+                            <field name="partner_id" on_change="onchange_partnerid(partner_id)"/>
+                            <field name="phone"/>
+                            <field name="address_id" colspan="4"/>
+                            <field name="sale_id"/>
+                            <field name="planned_date"/>
+                        </group>
+                        <group colspan="2" col="2">
+                            <field name="is_install"/>
+                            <field name="is_uninstall"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Installation Lines">
+                            <field name="install_line_ids" nolabel="1" colspan="4"/>
+                            <group colspan="4" col="4">
+                                <field name="state"/>
+                                <button name="start_install" string="Start Installation" states='draft' icon="gtk-media-play"/>
+                            </group>
+                        </page>
+                        <page string="Extra Info.">
+                            <group colspan="2" col="2">
+                                <separator string="Commitment Dates" colspan="4"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                            <group colspan="2" col="2">
+                                <newline/>
+                                <field name="user_id"/>
+                                <field name="latitude"/>
+                                <field name="length"/>
+                            </group>
+                            <group colspan="2" col="2">
+                                <separator string="Details for Panic Button" colspan="4"/>
+                                <field name="contact_name"/>
+                                <field name="mobile"/>
+                                <field name="email" widget="email"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_doc_tree">
+            <field name="name">install.doc.tree</field>
+            <field name="model">install.doc</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Installation Document">
+                    <field name="name" />
+                    <field name="origin"/>
+                    <field name="sale_id"/>
+                    <field name="user_id"/>
+                    <field name="planned_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_install_doc_form">
+            <field name="name">Installation Document</field>
+            <field name="res_model">install.doc</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_install_doc_form" id="menu_action_install_doc_form"
+            sequence="1"
+            parent="menu_install_doc"/>
+
+<!--===========================installation lines=========================-->
+        <record model="ir.ui.view" id="install_doc_line_search">
+            <field name="name">install.doc.line.search</field>
+            <field name="model">install.doc.line</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Installation Line">
+                    <group>
+                        <filter icon="terp-check" string="Installed" domain="[('state', 'in', ['installed'])]"/>
+                        <filter icon="terp-dialog-close" string="Not Installed" domain="[('state', 'in', ['uninstalled'])]"/>
+                        <separator orientation="vertical"/>
+                        <field name="name"/>
+                    </group>
+                    <newline/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="install_doc_line_form">
+            <field name="name">install.doc.line.form</field>
+            <field name="model">install.doc.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Installation Line">
+                    <group colspan="4" col="4">
+                    <field name="prodlot_id"
+                        context="{'location_id':location_id,'product_id':product_id}"
+                        on_change="onchange_lot_id(prodlot_id,qty, location_id, product_id, uom_id)"/>
+                    <field name="name" />
+                    <field name="location_id" invisible="1"/>
+                    <field name="product_id" invisible="1"/>
+                    <field name="qty" invisible="1"/>
+                    <field name="uom_id" invisible="1"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Basic Information">
+                            <group colspan="2" col="2">
+                                <separator string="Basic" colspan="4"/>
+                                <field name="economic_no" attrs="{'required':[('saved','=',True)]}"/>
+                                <field name="license_plate" attrs="{'required':[('saved','=',True)]}"/>
+                                <field name="brand_id"/>
+                                <field name="model_id"/>
+                                <field name="year"/>
+                                <field name="saved" invisible="1"/>
+                            </group>
+                            <group colspan="2" col="2">
+                                <separator string="Extra Details" colspan="4"/>
+                                <field name="brake_type_id"/>
+                                <field name="transmission_id"/>
+                                <field name="retarder_id"/>
+                                <field name="engine_brand_id"/>
+                                <field name="engine_model_id"/>
+                                <field name="engine_serial_no" attrs="{'required':[('saved','=',True)]}"/>
+                            </group>
+                            <group colspan="4" col="4">
+                                <field name="state"/>
+                                <button name="start_install" states="draft" string="Install" icon="gtk-go-forward"/>
+                                <button name="start_uninstall" states="installed" string="Uninstall" icon="terp-gtk-go-back-rtl"/>
+                            </group>
+                        </page>
+                        <page string="Guide for Installers">
+                            <field name="note" nolabel="1" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="install_doc_line_tree">
+            <field name="name">install.doc.line.tree</field>
+            <field name="model">install.doc.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Installation Line">
+                    <field name="name" />
+                    <field name="prodlot_id"/>
+                    <field name="engine_serial_no" attrs="{'required':[('saved','=',True)]}"/>
+                    <field name="economic_no" attrs="{'required':[('saved','=',True)]}"/>
+                    <field name="license_plate" attrs="{'required':[('saved','=',True)]}"/>
+                    <field name="brand_id"/>
+                    <field name="state"/>
+                    <field name="saved" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_install_doc_line_form">
+            <field name="name">Installation Lines</field>
+            <field name="res_model">install.doc.line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+    </data>
+</openerp>

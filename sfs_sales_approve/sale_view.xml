@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_order_form_inherit" model="ir.ui.view">
+           <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/form/notebook/page/field[@name='order_line']" position="attributes">
+                  <attribute name="attrs">{'readonly':[('approve_price','=',True)]}</attribute>
+              </xpath>
+                <group col="13" colspan="4" position="before">
+                	<group col="6" colspan="4" >
+	                	<field name="approve_price" colspan="2"/>
+	                	<field name="not_require" colspan="2" invisible="1"/>
+	                    <button name="approve_price" string="Aprobar Los Precios" icon="gtk-apply" type="object" attrs="{ 'invisible' : ['|','|',('state','!=','draft'),('approve_price','=',True),('not_require','=',True)]}" />
+	                    <button name="not_require" string="No Se Requiere" icon="gtk-go-forward" type="object" attrs="{ 'invisible' : ['|','|',('state','!=','draft'),('approve_price','=',True),('not_require','=',True)]}" help="Price approval not required" />
+	                </group>
+
+                </group>
+               <button name="order_confirm" states="draft" string="Confirm Order" icon="gtk-apply" position="replace">
+               		<group col="1" colspan="1" attrs="{ 'invisible' : [('approve_price','=',False),('not_require','=',False)]}">
+               			<button name="order_confirm" states="draft"  string="Confirm Order" icon="gtk-apply"/>
+               		</group>
+               	</button>
+
+            </field>
+        </record>
+
+<!-- Tree view-->
+
+        <record id="view_order_tree_inherit" model="ir.ui.view">
+           <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+            	<field name="state" position="after">
+            		<field name="approve_price"/>
+            	</field>
+            </field>
+          </record>
+
+      <!-- search view-->
+
+        <record id="view_sales_order_filter_inherit" model="ir.ui.view">
+           <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="type">search</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+            	<separator orientation="vertical" position="before">
+            		<filter icon="terp-check" string="Price Approved" domain="[('approve_price','=',True)]" />
+            	</separator>
+            </field>
+          </record>
+
+
+    </data>
+</openerp>

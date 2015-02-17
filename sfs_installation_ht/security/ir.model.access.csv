@@ -1,0 +1,10 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_install_brand","install.brand","model_install_brand","stock.group_stock_manager",1,1,1,1
+"access_install_model","install.model","model_install_model","stock.group_stock_manager",1,1,1,1
+"access_install_brake_type","install.brake.type","model_install_brake_type","stock.group_stock_manager",1,1,1,1
+"access_install_transmission","install.transmission","model_install_transmission","stock.group_stock_manager",1,1,1,1
+"access_install_retarder","install.retarder","model_install_retarder","stock.group_stock_manager",1,1,1,1
+"access_install_doc","install.doc","model_install_doc","stock.group_stock_manager",1,1,1,1
+"access_install_doc_line","install.doc.line","model_install_doc_line","stock.group_stock_manager",1,1,1,1
+"access_install_doc_user","install.doc user","model_install_doc","stock.group_stock_user",1,1,1,0
+"access_install_doc_line_user","install.doc.line user","model_install_doc_line","stock.group_stock_user",1,1,1,0

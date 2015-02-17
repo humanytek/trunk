@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<openerp>
+        <data>
+
+
+<!-- Prescription doctors view-->
+	<record model="ir.ui.view" id="medical_prescription_view_inherit">
+		<field name="name">Prescription</field>
+		<field name="model">medical.prescription.order</field>
+		<field name="inherit_id" ref="medical.medical_prescription_view" />
+		<field name="type">form</field>
+			<field name="arch" type="xml">
+				<field name="pharmacy" position="after">
+	            	<field name="insurance_id" domain="[('name','=',patient_id)]"></field>
+                 </field>
+                 <field name="insurance_id" position="after">
+	            	<field name="patient_id" invisible="1"></field>
+                 </field>
+                 <field name="name" position="replace">
+	            	<field name="name" required="1" on_change="onchange_name(name,patient_id,insurance_id)"></field>
+                 </field>
+                 <field name="prescription_line" position="replace">
+	            	<field name="prescription_line" colspan="4" nolabel="1" widget="one2many_list" default_get="{'insurance_id':insurance_id}"></field>
+                 </field>
+                 	<field name="prescription_line" position="after">
+	            	<field name="state" invisible="1"></field>
+                 </field>
+
+			</field>
+	</record>
+
+	<record model="ir.ui.view" id="medical_prescription_line_view_inherit">
+		<field name="name">Prescription Line</field>
+		<field name="model">medical.prescription.line</field>
+		<field name="inherit_id" ref="medical.medical_prescription_line_view" />
+		<field name="type">form</field>
+			<field name="arch" type="xml">
+				<field name="end_treatment" position="after">
+	            	<field name="insurance_id" domain="[('name','=',parent.patient_id)]" context="{'insurance_id':parent.insurance_id}"></field>
+                 </field>
+			</field>
+	</record>
+
+	<record model="ir.ui.view" id="medical_prescription_line_tree_inherit">
+		<field name="name">Prescription Line</field>
+		<field name="model">medical.prescription.line</field>
+		<field name="inherit_id" ref="medical.medical_prescription_line_tree" />
+		<field name="type">form</field>
+			<field name="arch" type="xml">
+				<field name="duration_period" position="after">
+	            	<field name="insurance_id" ></field>
+
+                 </field>
+			</field>
+	</record>
+
+
+	<!-- Action to generate a new prescription -->
+
+	<record model="ir.actions.act_window" id="medical_action_prescription1">
+		<field name="name">Prescriptions</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">medical.prescription.order</field>
+		<field name="view_type">form</field>
+		<field name="view_id" ref="medical.medical_prescription_tree"/>
+	</record>
+
+	<record id="medical_action_prescription_tree_view1" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="medical_pharmacy_tree"/>
+            <field name="act_window_id" ref="medical_action_pharmacy"/>
+        </record>
+
+
+	 <record id="medical_action_prescription_tree_view2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="medical_pharmacy_view"/>
+            <field name="act_window_id" ref="medical_action_pharmacy"/>
+        </record>
+
+
+<!-- Menu entry, under Patients -->
+
+	<!--menuitem action="medical_action_prescription1" id="medical_conf_prescription1" parent="medical.medical_patients_menu"/-->
+
+
+
+
+
+	</data>
+</openerp>

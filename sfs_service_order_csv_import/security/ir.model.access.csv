@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_import_log_manager","import_log_manager","model_import_log","base.group_sale_manager",1,1,1,1
+"access_import_log_user","import_log_user","model_import_log","base.group_sale_salesman",1,1,1,1
